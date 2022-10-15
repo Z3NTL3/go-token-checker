@@ -92,10 +92,9 @@ func main() {
 		return
 	}
 	defer f.Close()
-
+	client := http.Client{}
 	for _, v := range tokens {
 		v = strings.TrimSpace(v)
-		client := http.Client{}
 		request, err := http.NewRequest(http.MethodGet, API, nil)
 
 		if err != nil {
