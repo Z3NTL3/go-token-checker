@@ -12,6 +12,11 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
+/*
+Programmed by Z3NTL3 - pix4.dev
+
+	Fastest Token Checker!!!
+*/
 type information struct {
 	req    *http.Request
 	client *http.Client
@@ -45,7 +50,7 @@ func (client information) CheckToken() error {
 		goods += 1
 		good_tokens += t
 
-		client.file.WriteString(t)
+		client.file.WriteString(t + "\n")
 	} else {
 		fmt.Println("\033[1m\033[0;97m[INFO] \033[31mBad Token: \033[1m\033[0;97m", t, "\033[0m")
 	}
@@ -76,7 +81,8 @@ func main() {
 		fmt.Println("\n\033[1m\033[0;97m[INFO] \033[31mAdd tokens into your token file\033[0m")
 		return
 	}
-	tokens := strings.Split(string(content), "\n")
+	clear := strings.Trim(string(content), "\n")
+	tokens := strings.Split(clear, "\n")
 
 	fmt.Println()
 
