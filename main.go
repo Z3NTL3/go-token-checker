@@ -30,6 +30,7 @@ func (client information) CheckToken() error {
 	t := client.token
 	c := client.client
 
+	t = strings.TrimSpace(t)
 	req := client.req
 
 	req.Header.Add("user-agent", "Mozilla/5.0 (Linux; Android 11; Pixel 5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.91 Mobile Safari/537.36")
@@ -70,7 +71,13 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+
+	if len(string(content)) == 0 {
+		fmt.Println("\n\033[1m\033[0;97m[INFO] \033[31mAdd tokens into your token file\033[0m")
+		return
+	}
 	tokens := strings.Split(string(content), "\n")
+
 	fmt.Println()
 
 	f, err := os.OpenFile("goods.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -78,6 +85,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+	defer f.Close()
 
 	for _, v := range tokens {
 		v = strings.TrimSpace(v)
