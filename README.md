@@ -1,6 +1,10 @@
 # go-token-checker
 A Go script to check Discord tokens. Empowered by Goroutines.
 
+```
+# Compiling is not required but if you do not trust the executable compile it your self. 
+# Use the instructions mentioned below
+```
 
 # How to run
 On your terminal:
