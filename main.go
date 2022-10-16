@@ -45,12 +45,14 @@ func (client information) CheckToken() error {
 	resp, _ := c.Do(req)
 	length, _ := resp.Body.Read(content)
 
-	if !strings.Contains(string(content[0:length]), `Unauthorized`) {
+	if !strings.Contains(string(content[0:length]), `Unauthorized`) && !strings.Contains(string(content[0:length]), "error") {
 		fmt.Println("\033[1m\033[0;97m[INFO] \033[32mGood Token: \033[1m\033[0;97m", t, "\033[0m")
 		goods += 1
 		good_tokens += t
 
 		client.file.WriteString(t + "\n")
+	} else if strings.Contains(string(content[0:length]), "error") {
+		fmt.Println("\033[1m\033[0;97m[INFO] \033[31mRATE LIMIT BY DISCORD\033[0m")
 	} else {
 		fmt.Println("\033[1m\033[0;97m[INFO] \033[31mBad Token: \033[1m\033[0;97m", t, "\033[0m")
 	}
