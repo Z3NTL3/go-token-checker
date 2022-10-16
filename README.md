@@ -1,6 +1,11 @@
 # go-token-checker
 A Go script to check Discord tokens. Empowered by Goroutines.
 
+### How to set proxy
+Execute this on your shell
+Go will automatically use this proxy.
+```export HTTP_PROXY="http://proxyIp:proxyPort"```
+
 ```
 # Compiling is not required but if you do not trust the executable , compile the SRC your self. 
 # Use the instructions mentioned below
